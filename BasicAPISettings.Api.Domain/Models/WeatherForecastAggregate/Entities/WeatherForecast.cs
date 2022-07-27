@@ -1,4 +1,4 @@
-namespace BasicAPISettings.Api;
+namespace BasicAPISettings.Api.Domain.Models.WeatherForecastAggregate.Entities;
 
 public class WeatherForecast
 {

@@ -1,3 +1,4 @@
+using BasicAPISettings.Api.Domain.Models.WeatherForecastAggregate.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BasicAPISettings.Api.Controllers;

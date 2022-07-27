@@ -12,4 +12,8 @@
 	<PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BasicAPISettings.Api.Domain\BasicAPISettings.Api.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
