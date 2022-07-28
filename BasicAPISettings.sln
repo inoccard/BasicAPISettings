@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicAPISettings.Api", "Bas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicAPISettings.Api.Domain", "BasicAPISettings.Api.Domain\BasicAPISettings.Api.Domain.csproj", "{ED80CFAB-9179-4655-9A23-0245227B060D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicAPISettings.Api.Data", "BasicAPISettings.Api.Data\BasicAPISettings.Api.Data.csproj", "{913C234D-644D-4275-AE5B-2E5C064E391B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ED80CFAB-9179-4655-9A23-0245227B060D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED80CFAB-9179-4655-9A23-0245227B060D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED80CFAB-9179-4655-9A23-0245227B060D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{913C234D-644D-4275-AE5B-2E5C064E391B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{913C234D-644D-4275-AE5B-2E5C064E391B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{913C234D-644D-4275-AE5B-2E5C064E391B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{913C234D-644D-4275-AE5B-2E5C064E391B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
