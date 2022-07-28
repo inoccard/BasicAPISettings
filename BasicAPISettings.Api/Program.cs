@@ -1,3 +1,4 @@
+using BasicAPISettings.Api.Configs;
 using BasicAPISettings.Api.Configs.Database;
 using BasicAPISettings.Api.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -8,8 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddAppConfiguration();
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 builder.Services.AddVersionedSwagger();
+
 builder.Services.AddCors();
 builder.Services.AddMemoryCache();
 builder.Services.AddDistributedMemoryCache();
