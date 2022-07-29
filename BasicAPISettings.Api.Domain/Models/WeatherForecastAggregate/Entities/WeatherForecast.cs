@@ -1,6 +1,8 @@
+using BasicAPISettings.Api.Domain.SeedWorks;
+
 namespace BasicAPISettings.Api.Domain.Models.WeatherForecastAggregate.Entities;
 
-public class WeatherForecast
+public class WeatherForecast : EntityInt32Id
 {
     public DateTime Date { get; set; }
 
