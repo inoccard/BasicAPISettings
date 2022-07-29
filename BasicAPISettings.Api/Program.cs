@@ -23,13 +23,14 @@ builder.Services.RegisterComponents();
 
 var app = builder.Build();
 
+//app.Migrate(); // descomente após adicionar as credenciais do banco de dados
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 else
     app.UseHsts();
 
-app.Migrate();
 
 app.UseSupportedCultures(builder.Configuration);
 
