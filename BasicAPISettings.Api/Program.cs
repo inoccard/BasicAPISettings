@@ -1,5 +1,7 @@
 using BasicAPISettings.Api.Configs;
+using BasicAPISettings.Api.Configs.Autofac;
 using BasicAPISettings.Api.Configs.Database;
+using BasicAPISettings.Api.Configs.SupportedCultures;
 using BasicAPISettings.Api.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
@@ -17,6 +19,7 @@ builder.Services.AddVersionedSwagger();
 builder.Services.AddCors();
 builder.Services.AddMemoryCache();
 builder.Services.AddDistributedMemoryCache();
+builder.Services.RegisterComponents();
 
 var app = builder.Build();
 
@@ -26,12 +29,15 @@ if (app.Environment.IsDevelopment())
 else
     app.UseHsts();
 
+app.Migrate();
+
+app.UseSupportedCultures(builder.Configuration);
+
 app.UseVersionedSwagger(app.Services.GetRequiredService<IApiVersionDescriptionProvider>());
 
+app.UseRouting();
+app.UseCors(a => a.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

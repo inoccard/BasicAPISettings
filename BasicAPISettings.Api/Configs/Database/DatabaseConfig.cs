@@ -12,10 +12,13 @@ public static class DatabaseConfig
     /// <param name="configuration"></param>
     public static void AddDatabaseConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<DataContext>(
-            builder =>
-            {
-                builder.UseSqlServer(configuration.GetConnectionString("App"));
-            });
+        services.AddDbContext<DataContext>(builder => builder.UseSqlServer(configuration.GetConnectionString("App")));
+    }
+
+    public static void Migrate(this WebApplication app)
+    {
+        var services = app.Services.CreateScope().ServiceProvider;
+        var dataContext = services.GetRequiredService<DataContext>();
+        dataContext.Database.Migrate();
     }
 }

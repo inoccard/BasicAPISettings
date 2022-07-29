@@ -1,5 +1,7 @@
-﻿namespace BasicAPISettings.Api.Domain.Repositories;
+﻿using BasicAPISettings.Api.Domain.Models.WeatherForecastAggregate.Entities;
 
-public interface IWeatherForecastRepository
+namespace BasicAPISettings.Api.Domain.Repositories;
+
+public interface IWeatherForecastRepository : IGenericRepository<WeatherForecast>
 {
 }
