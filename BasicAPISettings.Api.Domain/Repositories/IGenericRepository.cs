@@ -51,5 +51,5 @@ public interface IGenericRepository<T> where T : class
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    Task<T> GetByIdAsync(T id);
+    Task<T> GetByIdAsync(long id);
 }

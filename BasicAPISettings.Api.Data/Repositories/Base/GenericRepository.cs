@@ -22,5 +22,5 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
     public async Task<T[]> GetAll() => await _dbSet.AsNoTracking().ToArrayAsync();
 
-    public async Task<T> GetByIdAsync(T id) => await _dbSet.FindAsync(id);
+    public async Task<T> GetByIdAsync(long id) => await _dbSet.FindAsync(id);
 }

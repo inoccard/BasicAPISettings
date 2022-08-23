@@ -1,5 +1,7 @@
 using BasicAPISettings.Api.Domain.Models.WeatherForecastAggregate.Entities;
+using BasicAPISettings.Api.Domain.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace BasicAPISettings.Api.Controllers;
 
@@ -14,12 +16,15 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly IWeatherForecastRepository _repository;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherForecastRepository repository)
     {
         _logger = logger;
+        _repository = repository;
     }
 
+    [SwaggerResponse(StatusCodes.Status200OK, "", typeof(IEnumerable<WeatherForecast>))]
     [HttpGet]
     public IEnumerable<WeatherForecast> Get()
     {
@@ -30,5 +35,16 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+    }
+
+    /// <summary>
+    /// obtém um WeatherForecast
+    /// </summary>
+    /// <returns></returns>
+    [SwaggerResponse(StatusCodes.Status200OK, "", typeof(WeatherForecast))]
+    [HttpGet("{id}")]
+    public async Task<WeatherForecast> Get(long id)
+    {
+        return await _repository.GetByIdAsync(id);
     }
 }
