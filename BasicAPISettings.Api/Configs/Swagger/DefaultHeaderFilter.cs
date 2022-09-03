@@ -2,7 +2,7 @@
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace BasicAPISettings.Api.Swagger;
+namespace BasicAPISettings.Api.Configs.Swagger;
 
 public class DefaultHeaderFilter : IOperationFilter
 {

@@ -2,7 +2,7 @@ using BasicAPISettings.Api.Configs;
 using BasicAPISettings.Api.Configs.Autofac;
 using BasicAPISettings.Api.Configs.Database;
 using BasicAPISettings.Api.Configs.SupportedCultures;
-using BasicAPISettings.Api.Swagger;
+using BasicAPISettings.Api.Configs.Swagger;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 var builder = WebApplication.CreateBuilder(args);

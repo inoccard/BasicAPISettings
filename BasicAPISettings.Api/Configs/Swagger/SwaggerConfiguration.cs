@@ -3,7 +3,7 @@ using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
 
-namespace BasicAPISettings.Api.Swagger;
+namespace BasicAPISettings.Api.Configs.Swagger;
 
 public static class SwaggerConfiguration
 {
