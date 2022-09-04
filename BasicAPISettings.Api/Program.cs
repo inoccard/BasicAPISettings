@@ -1,4 +1,5 @@
 using BasicAPISettings.Api.Configs;
+using BasicAPISettings.Api.Configs.Auth;
 using BasicAPISettings.Api.Configs.Autofac;
 using BasicAPISettings.Api.Configs.Database;
 using BasicAPISettings.Api.Configs.SupportedCultures;
@@ -14,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddAppConfiguration();
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
+builder.Services.AddAuthenticationConfiguration(builder.Configuration);
 builder.Services.AddVersionedSwagger();
 
 builder.Services.AddCors();

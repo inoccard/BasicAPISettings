@@ -1,40 +1,34 @@
 using BasicAPISettings.Api.Domain.Models.WeatherForecastAggregate.Entities;
 using BasicAPISettings.Api.Domain.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace BasicAPISettings.Api.Controllers;
 
+//[Authorize]
 [ApiVersion("1.0")]
 [ApiController]
 [Route("api/v{version:apiVersion}/weather-forecast")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
-    private readonly ILogger<WeatherForecastController> _logger;
     private readonly IWeatherForecastRepository _repository;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherForecastRepository repository)
+    public WeatherForecastController(IWeatherForecastRepository repository)
     {
-        _logger = logger;
         _repository = repository;
     }
 
     [SwaggerResponse(StatusCodes.Status200OK, "", typeof(IEnumerable<WeatherForecast>))]
     [HttpGet]
-    public IEnumerable<WeatherForecast> Get()
+    public async Task<IActionResult> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateTime.Now.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        var weatherForecasts = await _repository.GetAll();
+
+        if (weatherForecasts is not null || weatherForecasts?.Length == 0)
+            return Ok(weatherForecasts);
+        else
+            return BadRequest("Nenhum dado foi encontrado!");
     }
 
     /// <summary>
@@ -43,8 +37,8 @@ public class WeatherForecastController : ControllerBase
     /// <returns></returns>
     [SwaggerResponse(StatusCodes.Status200OK, "", typeof(WeatherForecast))]
     [HttpGet("{id}")]
-    public async Task<WeatherForecast> Get(long id)
+    public async Task<IActionResult> Get(long id)
     {
-        return await _repository.GetByIdAsync(id);
+        return Ok(await _repository.GetByIdAsync(id));
     }
 }
